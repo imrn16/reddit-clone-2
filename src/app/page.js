@@ -173,7 +173,7 @@ export default function Home() {
 					</div>
 				</div>
 			) : (
-				<div className="flex flex-row m-4 justify-center">
+				<div className="flex flex-row m-4 justify-center h-screen">
 					<div className=" flex flex-col w-1/2 max-w-2xl min-w-xl  h-[calc(100vh-64px)] overflow-y-scroll scrollbar-hide ">
 						<SubredditHeader />
 						{fetchError && <p>{fetchError}</p>}
