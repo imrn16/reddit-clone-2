@@ -407,6 +407,7 @@ function CreatePost() {
 							className="bg-neutral-700 w-full mt-1 p-2 rounded-xl resize-none placeholder:text-neutral-500"
 							placeholder="Enter Content"
 							onChange={(e) => setDetails(e.target.value)}
+							minRows={3}
 						/>
 					</div>
 					<hr className="flex flex-row items-center align-center justify-center my-4 border-t-1 border-neutral-700"></hr>
