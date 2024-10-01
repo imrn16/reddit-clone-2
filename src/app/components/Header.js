@@ -72,17 +72,21 @@ function Header() {
 
 	const toggleDropdown = () => {
 		setIsUserDropdownOpen(!isUserDropdownOpen);
+		setIsCreateDropdownOpen(false);
 		console.log("AUTHOR: ", authorUser);
 		console.log('signinbutton: ', signedInButton)
 	};
 
 	const toggleNoDropdown = () => {
 		setIsNoUserDropdownOpen(!isNoUserDropdownOpen);
+		setIsCreateDropdownOpen(false);
 		console.log("USER: ", user);
 	};
 
 	const toggleCreateDropdown = () => {
 		setIsCreateDropdownOpen(!isCreateDropdownOpen);
+		setIsUserDropdownOpen(false);
+		setIsNoUserDropdownOpen(false);
 		console.log("USER: ", authorUser);
 	};
 

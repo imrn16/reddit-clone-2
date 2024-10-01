@@ -9,7 +9,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import scrollbarHide from "tailwind-scrollbar-hide";
 
 function PostPage() {
-	const { ident, title, content, author, showComPage, upvote, created, downvote, pic, postComs, dateCreatedParse, comments, subrdt } = useReddit();
+	const { ident, title, content, author, showComPage, upvote, created, downvote, pic, postComs, dateCreatedParse, comments, subrdt, uploadType, fileName } = useReddit();
 	const [votes, setVotes] = useState(upvote - downvote);
 
 	useEffect(() => {}, [ident, title, content, author, showComPage, postComs, comments, subrdt]);
@@ -30,7 +30,7 @@ function PostPage() {
 						<div className="flex mt-3">
 							<h1 className="flex items-center font-bold text-lg">{title}</h1>
 						</div>
-						{pic ? (
+						{uploadType == 'URL' ? (
 							<div className="flex max-h-96 relative">
 								<Image
 									className="w-full h-full object-contain rounded-2xl mt-4"
@@ -42,8 +42,20 @@ function PostPage() {
 									style={{ maxWidth: "100%", maxHeight: "100%" }}
 								/>
 							</div>
+						) : uploadType == 'Upload' ? (
+							<div className="flex max-h-96 relative">
+								<Image
+									className="w-full h-full object-contain rounded-2xl mt-4"
+									src={`https://ugahqsneiokuzgjwfoht.supabase.co/storage/v1/object/public/posts/public/${fileName}`}
+									alt={`${`https://ugahqsneiokuzgjwfoht.supabase.co/storage/v1/object/public/posts/public/${fileName}`}`}
+									layout="responsive"
+									width={1024}
+									height={683}
+									style={{ maxWidth: "100%", maxHeight: "100%" }}
+								/>
+							</div>
 						) : (
-							<div />
+							<div/>
 						)}
 						<div className="flex flex-col w-auto mt-2">
 							<span

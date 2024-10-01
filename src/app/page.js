@@ -120,6 +120,7 @@ export default function Home() {
 														postPic={post.postPic}
 														subreddit={post.subreddit}
 														createdAt={post.created_at}
+														upload={post.upload}
 													/>
 													<hr className="mt-5 border-t-2 border-neutral-700"></hr>
 												</div>
@@ -192,6 +193,8 @@ export default function Home() {
 													postPic={post.postPic}
 													subreddit={post.subreddit}
 													createdAt={post.created_at}
+													upload={post.upload}
+													file={post.file}
 												/>
 												<hr className="mt-5 border-t-2 border-neutral-700"></hr>
 											</div>

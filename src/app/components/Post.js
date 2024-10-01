@@ -8,7 +8,7 @@ import Image from "next/image.js";
 import { useEffect } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
-function Post({ id, title, content, author, upvote, downvote, postPic, subreddit, createdAt }) {
+function Post({ id, title, content, author, upvote, downvote, postPic, subreddit, createdAt, upload, file }) {
 	const { setComments, postComs, dateCreatedPars, checkUserAuthenticated, dateCreatedParse, supabase, reRenderComments, fetchPosts, posts } = useReddit();
 
 	const [votes, setVotes] = useState(upvote - downvote);
@@ -99,17 +99,37 @@ function Post({ id, title, content, author, upvote, downvote, postPic, subreddit
 					{/* <h2 className="flex items-center text-xs pl-2 font-extralight"> - Created by {author}</h2> */}
 				</div>
 
-				{postPic ? (
-					// <div className="flex max-h-96 mr-3 relative">
-					// 	<div className="absolute inset-0 flex items-center justify-center">
-					// 		<Image
-					// 			className="w-full h-full object-cover rounded-2xl"
-					// 			src={postPic}
-					// 			layout="responsive"
-					// 			width={1}
-					// 			height={1}
-					// 			style={{ maxWidth: "100%", maxHeight: "100%" }}
-					// 		/>
+				{upload == "Upload" ? (
+					<div className="flex max-h-96 mr-3 relative justify-center mt-1 ">
+						<div className="absolute inset-0 flex items-center justify-center ">
+							<Image
+								className="w-full h-full object-cover rounded-2xl"
+								src={`https://ugahqsneiokuzgjwfoht.supabase.co/storage/v1/object/public/posts/public/${file}`}
+								alt="image"
+								//layout="responsive"
+								//responsive
+								width={1}
+								height={1}
+								style={{ maxWidth: "100%", maxHeight: "100%" }}
+								priority
+							/>
+							<div className="absolute inset-0 bg-black bg-opacity-75 backdrop-blur-md rounded-2xl"></div>
+						</div>
+						<div className="relative z-10 flex items-center justify-center  ">
+							<Image
+								className="flex items-center justify-center align-center object-contain rounded-2xl w-auto h-auto"
+								src={`https://ugahqsneiokuzgjwfoht.supabase.co/storage/v1/object/public/posts/public/${file}`}
+								alt="image"
+								//responsive
+								width={1}
+								height={1}
+								style={{ maxWidth: "100%", maxHeight: "100%" }}
+								disabled={true}
+								priority
+							/>
+						</div>
+					</div>
+				) : upload == "URL" ? (
 					<div className="flex max-h-96 mr-3 relative justify-center mt-1 ">
 						<div className="absolute inset-0 flex items-center justify-center ">
 							<Image
@@ -141,7 +161,7 @@ function Post({ id, title, content, author, upvote, downvote, postPic, subreddit
 					</div>
 				) : (
 					<TextareaAutosize
-						className="flex w-full resize-none bg-transparent pt-3 pr-1 text-sm text-neutral-400 font-light overflow-ellipsis h-auto focus:outline-none overflow-hidden"
+						className="flex w-full resize-none bg-transparent pt-3 pr-1 text-sm text-neutral-300 font-light overflow-ellipsis h-auto focus:outline-none overflow-hidden"
 						maxRows={6}
 						disabled={true}
 						value={content}></TextareaAutosize>
@@ -178,6 +198,8 @@ function Post({ id, title, content, author, upvote, downvote, postPic, subreddit
 							postPic={postPic}
 							subreddit={subreddit}
 							created={createdAt}
+							upload={upload}
+							file={file}
 						/>
 					</div>
 				</div>

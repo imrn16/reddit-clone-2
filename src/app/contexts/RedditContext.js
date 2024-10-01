@@ -22,6 +22,8 @@ export const RedditProvider = ({ children }) => {
 	const [user, setUser] = useState();
 	const [created, setCreated] = useState();
 	const [subrdt, setSubrdt] = useState();
+	const [uploadType, setUploadType] = useState();
+	const [fileName, setFileName] = useState();
 
 	const supabase = createClient();
 	console.log(`supabase created`);
@@ -197,7 +199,7 @@ export const RedditProvider = ({ children }) => {
 		}
 	};
 
-	const setComments = async ({ commentId, commentTitle, commentContent, commentAuthor, commentUpvote, commentDownvote, commentPic, commentCreated, commentSubreddit }) => {
+	const setComments = async ({ commentId, commentTitle, commentContent, commentAuthor, commentUpvote, commentDownvote, commentPic, commentCreated, commentSubreddit, commentFile, commentUpload }) => {
 		setPostComs([]);
 		await fetchPosts();
 
@@ -215,6 +217,8 @@ export const RedditProvider = ({ children }) => {
 				setPic(commentPic);
 				setCreated(commentCreated);
 				setSubrdt(commentSubreddit);
+				setFileName(commentFile);
+				setUploadType(commentUpload);
 			}
 		});
 
@@ -316,7 +320,7 @@ export const RedditProvider = ({ children }) => {
 				reRenderComments,
 				setShowComPage,
 				showComPage2,
-				setShowComPage2, isLargeScreen, setIsLargeScreen
+				setShowComPage2, isLargeScreen, setIsLargeScreen, uploadType, fileName,
 			}}>
 			{children}
 		</RedditContext.Provider>

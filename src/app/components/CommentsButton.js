@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { comment } from "postcss";
 import { useState } from "react";
 
-function CommentsButton({id, title, content, author, postPic, subreddit, created}) {
+function CommentsButton({id, title, content, author, postPic, subreddit, created, file, upload}) {
 
     const {setComments, comments, setShowComPage, showComPage, setShowComPage2} = useReddit()
 
@@ -24,7 +24,7 @@ function CommentsButton({id, title, content, author, postPic, subreddit, created
 	}, [comments]);
 
 	function handleClick () {
-		setComments({commentId: id, commentTitle: title, commentContent: content, commentAuthor: author, commentPic: postPic, commentSubreddit: subreddit, commentCreated: created})
+		setComments({commentId: id, commentTitle: title, commentContent: content, commentAuthor: author, commentPic: postPic, commentSubreddit: subreddit, commentCreated: created, commentFile: file, commentUpload: upload })
 		console.log('handleClick : ', comments)
 	}
 
