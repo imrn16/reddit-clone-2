@@ -35,6 +35,9 @@ export default function Home() {
 		posts,
 		created,
 		subrdt,
+		uploadType,
+		fileName,
+
 		fetchSubreddits,
 		subreddits,
 		showCreatePostsModal,
@@ -121,6 +124,7 @@ export default function Home() {
 														subreddit={post.subreddit}
 														createdAt={post.created_at}
 														upload={post.upload}
+														file={post.file}
 													/>
 													<hr className="mt-5 border-t-2 border-neutral-700"></hr>
 												</div>
@@ -140,6 +144,8 @@ export default function Home() {
 														posts={posts}
 														createdAt={created}
 														subreddit={subrdt}
+														file={fileName}
+														upload={uploadType}
 													/>
 													<div>
 														<div

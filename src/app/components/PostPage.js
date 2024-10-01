@@ -47,7 +47,7 @@ function PostPage() {
 								<Image
 									className="w-full h-full object-contain rounded-2xl mt-4"
 									src={`https://ugahqsneiokuzgjwfoht.supabase.co/storage/v1/object/public/posts/public/${fileName}`}
-									alt={`${`https://ugahqsneiokuzgjwfoht.supabase.co/storage/v1/object/public/posts/public/${fileName}`}`}
+									alt={`https://ugahqsneiokuzgjwfoht.supabase.co/storage/v1/object/public/posts/public/${fileName}`}
 									layout="responsive"
 									width={1024}
 									height={683}
