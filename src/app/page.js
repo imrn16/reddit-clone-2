@@ -85,7 +85,9 @@ export default function Home() {
 	return (
 		// <RedditProvider>
 		<main className="">
+			<div className="top-0 w-full">
 			<Header />
+			</div>
 			<CreatePost />
 			<CreateSubreddit />
 			<SignInModal />
