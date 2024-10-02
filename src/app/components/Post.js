@@ -160,11 +160,12 @@ function Post({ id, title, content, author, upvote, downvote, postPic, subreddit
 						</div>
 					</div>
 				) : (
-					<TextareaAutosize
-						className="flex w-full resize-none bg-transparent pt-3 pr-1 text-sm text-neutral-100 font-light overflow-ellipsis h-auto focus:outline-none overflow-hidden"
+					<pre
+						className="flex w-full resize-none bg-transparent pt-3 pr-1 text-sm text-neutral-100 font- overflow-ellipsis h-auto focus:outline-none overflow-hidden font-sf-pro text-neutral-400 text-wrap "
+						style={{maxHeight: '135px'}}
 						maxRows={6}
 						disabled={true}
-						value={content}></TextareaAutosize>
+						value={content}>{content}</pre>
 				)}
 
 				<div className="flex h-8 m-2 ml-0 text-sm">
