@@ -79,8 +79,12 @@ function SignUpModal() {
 					className="fixed inset-0 bg-black opacity-65"
 					onClick={() => setShowSignUpModal(false)}></div>
 				<div className="bg-neutral-800 p-6 rounded-3xl drop-shadow-6xl z-10 w-11/12 max-w-lg border border-2 border-neutral-700">
-					<div className="flex justify-between items-center mb-4">
-						<h2 className="text-xl">Sign Up</h2>
+<div className="flex flex-col">
+					<div className="flex justify-between items-center ">
+						<div className="flex flex-col">
+						<h2 className="flex flex-col text-xl">Sign Up</h2>
+						
+						</div>
 						<div className="flex justify-center aling-center p-2 rounded-full hover:bg-neutral-900">
 							<button
 								className=""
@@ -89,7 +93,9 @@ function SignUpModal() {
 							</button>
 						</div>
 					</div>
-					<hr className="my-4 border-t-2 border-neutral-600"></hr>
+					<h3 className="flex flex-col text-xs text-neutral-600 ">{`Click the link from "Reddit Clone" in your email after you sign up.`}</h3>
+					</div>
+					<hr className="my-2 border-t-2 border-neutral-600"></hr>
 					<form
 						method="POST"
 						onSubmit={handleSubmit}>
