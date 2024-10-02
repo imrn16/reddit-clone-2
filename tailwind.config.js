@@ -8,9 +8,10 @@ module.exports = {
 				foreground: "var(--foreground)",
 			},
 		},
+		fontFamily: {
+			"sf-pro": ["SF Pro", "sans-serif"],
+			"sf-pro-expanded": ["SF Pro Expanded", "sans-serif"],
+		},
 	},
-	plugins: [
-		require('tailwind-scrollbar-hide')
-
-	],
+	plugins: [require("tailwind-scrollbar-hide")],
 };

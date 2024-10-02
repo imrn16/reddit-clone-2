@@ -190,12 +190,12 @@ function Comments({ id }) {
 					<p className="pl-1">•</p>
 					<p className="pl-1">{`${dateCreatedParse(created_at)}`}</p>
 				</div>
-				<TextareaAutosize
-					className="text-sm resize-none h-auto focus:outline-none bg-transparent w-full mt-1 ml-1 "
+				<pre
+					className="text-sm resize-none h-fit focus:outline-none bg-transparent w-full my-1 ml-1 font-sf-pro text-neutral-400"
 					disabled={"true"}
 					value={content}
-					>
-				</TextareaAutosize>
+					>{content}
+				</pre>
 				<div className="flex text-xs">
 					<div className="flex rounded-full bg-neutral-900">
 						<button onClick={() => handleUpvote(id, upvotes)}>

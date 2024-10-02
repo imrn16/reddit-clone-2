@@ -17,8 +17,8 @@ export default function RootLayout({ children }) {
 		<UserProvider>
 			<RedditProvider>
 				<html
-					className="bg-[rgb(24,26,27)] text-white overflow-hidden"
-					style={{ fontFamily: "sans-serif" }}
+					className="bg-[rgb(24,26,27)] text-white overflow-hidden font-sf-pro"
+					//style={{ fontFamily: "sans-serif" }}
 					lang="en">
 					<body className={inter.className}>{children}</body>
 				</html>
