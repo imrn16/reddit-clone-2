@@ -191,8 +191,8 @@ function Comments({ id }) {
 					<p className="pl-1">{`${dateCreatedParse(created_at)}`}</p>
 				</div>
 				<TextareaAutosize
-					className="text-sm resize-none focus:outline-none bg-transparent w-full mt-1 ml-1 "
-					disabled="true"
+					className="text-sm resize-none h-auto focus:outline-none bg-transparent w-full mt-1 ml-1 "
+					disabled={"true"}
 					value={content}
 					>
 				</TextareaAutosize>
