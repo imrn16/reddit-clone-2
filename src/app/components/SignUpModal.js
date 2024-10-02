@@ -10,8 +10,12 @@ import { revalidatePath } from "next/cache";
 function SignUpModal() {
 	const { showSignUpModal, setShowSignUpModal, checkUserAuthenticated } = useReddit();
 
+	const [user, setUser] = useState();
+	const [firstName, setFirstName] = useState();
+	const [lastName, setLastName] = useState();
 	const [email, setEmail] = useState();
 	const [pass, setPass] = useState();
+
 	const router = useRouter();
 
 	const handleSubmit = async (event) => {
@@ -19,6 +23,7 @@ function SignUpModal() {
 		const formData = new FormData(event.target);
 		await signup(formData);
 		setShowSignUpModal(false);
+		console.log('user: ', user, 'first name: ', firstName, 'last name: ', lastName, 'email: ', email, 'password: ', pass)
 		console.log(formData)
 		//router.push("/");
 		console.log("refresh after login");
@@ -64,8 +69,8 @@ function SignUpModal() {
 								name="username"
 								placeholder="Enter A User Name"
 								required
-								// value={email}
-								// onChange={(e) => setEmail(e.target.value)}
+								value={user}
+								onChange={(e) => setUser(e.target.value)}
 							/>
 						</div>
                         <div className="flex flex-row">
@@ -77,8 +82,8 @@ function SignUpModal() {
 								name="first_name"
 								placeholder="Enter First Name"
                                 required
-								// value={email}
-								// onChange={(e) => setEmail(e.target.value)}
+								value={firstName}
+								onChange={(e) => setFirstName(e.target.value)}
 							/>
 						</div>
                         <div className="mb-4 pl-2">
@@ -89,8 +94,8 @@ function SignUpModal() {
 								name="last_name"
 								placeholder="Enter Last Name"
                                 required
-								// value={email}
-								// onChange={(e) => setEmail(e.target.value)}
+								value={lastName}
+								onChange={(e) => setLastName(e.target.value)}
 							/>
 						</div>
                         </div>
@@ -103,8 +108,8 @@ function SignUpModal() {
 								name="email"
 								placeholder="Enter Your Email"
                                 required
-								// value={email}
-								// onChange={(e) => setEmail(e.target.value)}
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
 							/>
 						</div>
 						
@@ -116,8 +121,8 @@ function SignUpModal() {
 								name="password"
 								placeholder="Enter Your Password"
                                 required
-								// value={pass} 
-								// onChange={(e) => setPass(e.target.value)}
+								value={pass} 
+								onChange={(e) => setPass(e.target.value)}
 							/>
 						</div>
 
