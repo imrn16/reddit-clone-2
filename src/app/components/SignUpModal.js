@@ -19,7 +19,8 @@ function SignUpModal() {
 		const formData = new FormData(event.target);
 		await signup(formData);
 		setShowSignUpModal(false);
-		router.push("/");
+		console.log(formData)
+		//router.push("/");
 		console.log("refresh after login");
 		await checkUserAuthenticated();
 	};
