@@ -59,14 +59,14 @@ export async function signup(formData) {
 	console.log('sign up: ', data)
 
 	if (error) {
-		// redirect("/error");
+		redirect("/error");
 		console.log(error)
 		console.log('data: ', data, metadata)
 
 	}
 
-	// revalidatePath("/", "layout");
-	// redirect("/");
+	revalidatePath("/", "layout");
+	redirect("/");
 }
 
 export async function update(formData) {
