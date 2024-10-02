@@ -7,30 +7,70 @@ import { TiArrowUpOutline, TiArrowDownOutline, TiMessage } from "react-icons/ti"
 import Image from "next/image";
 import TextareaAutosize from "react-textarea-autosize";
 import scrollbarHide from "tailwind-scrollbar-hide";
+import { MdOutlineCancel, GiCancel } from "react-icons/md";
 
 function PostPage() {
-	const { ident, title, content, author, showComPage, upvote, created, downvote, pic, postComs, dateCreatedParse, comments, subrdt, uploadType, fileName } = useReddit();
+	const {
+		ident,
+		title,
+		content,
+		author,
+		showComPage,
+		upvote,
+		created,
+		downvote,
+		pic,
+		postComs,
+		dateCreatedParse,
+		comments,
+		subrdt,
+		uploadType,
+		fileName,
+		isLargeScreen,
+		setShowComPage,
+	} = useReddit();
 	const [votes, setVotes] = useState(upvote - downvote);
 
 	useEffect(() => {}, [ident, title, content, author, showComPage, postComs, comments, subrdt]);
 
-	
+	function handleClosePost() {
+		setShowComPage(false);
+	}
 
 	return (
 		<div className="flex flex-col w-full h-[calc(100vh-64px)] overflow-y-scroll scrollbar-hide">
 			<div className=" flex flex-col bg-[rgb(36,39,41)] rounded-3xl drop-shadow-2xl p-6 w-full h-auto mt-2 h-auto ">
 				{showComPage ? (
 					<>
-						<div className="flex">
-							<h3 className="flex items-center text-xs pr-3">🖥</h3>
-							<h3 className="flex items-center text-xs">{subrdt}</h3>
-							<h4 className="flex items-center text-xs pl-2 font-extralight"> • {author}</h4>
-							<h4 className="flex items-center text-xs pl-2 font-extralight"> • {`${dateCreatedParse(created)}`}</h4>
+						{isLargeScreen ? (
+							<div className="flex">
+								<h3 className="flex items-center text-xs pr-3">🖥</h3>
+								<h3 className="flex items-center text-xs">{subrdt}</h3>
+								<h4 className="flex items-center text-xs pl-2 font-extralight"> • {author}</h4>
+								<h4 className="flex items-center text-xs pl-2 font-extralight"> • {`${dateCreatedParse(created)}`}</h4>
+							</div>
+						) : (
+							<div className="flex flex-row ">
+							<div className="flex flex-row">
+								<h3 className="flex items-center text-xs pr-3">🖥</h3>
+								<h3 className="flex items-center text-xs">{subrdt}</h3>
+								<h4 className="flex items-center text-xs pl-2 font-extralight"> • {author}</h4>
+								<h4 className="flex items-center text-xs pl-2 font-extralight"> • {`${dateCreatedParse(created)}`}</h4>
+							</div>
+							<div className=" hover:bg-neutral-600 flex justify-center items-center rounded-full ml-auto">
+							<button
+								className="flex-flex-row p-1 text-neutral-400 "
+								onClick={() => handleClosePost()}>
+								<MdOutlineCancel size={"20"} />
+							</button>
 						</div>
+							</div>
+						)}
+
 						<div className="flex mt-3">
 							<h1 className="flex items-center font-bold text-lg">{title}</h1>
 						</div>
-						{uploadType == 'URL' ? (
+						{uploadType == "URL" ? (
 							<div className="flex max-h-96 relative">
 								<Image
 									className="w-full h-full object-contain rounded-2xl mt-4"
@@ -42,7 +82,7 @@ function PostPage() {
 									style={{ maxWidth: "100%", maxHeight: "100%" }}
 								/>
 							</div>
-						) : uploadType == 'Upload' ? (
+						) : uploadType == "Upload" ? (
 							<div className="flex max-h-96 relative">
 								<Image
 									className="w-full h-full object-contain rounded-2xl mt-4"
@@ -55,7 +95,7 @@ function PostPage() {
 								/>
 							</div>
 						) : (
-							<div/>
+							<div />
 						)}
 						<div className="flex flex-col w-auto mt-2">
 							<span
