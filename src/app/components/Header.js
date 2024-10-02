@@ -107,7 +107,7 @@ function Header() {
 	};
 
 	return (
-		<div className="flex p-2 px-8 bg-[rgb(17,19,19)] max-h-10">
+		<div className="flex p-2 px-8 bg-[rgb(17,19,19)] h-10">
 			<div className="flex flex-1 ">
 				<div className="flex items-center justify-center text-orange-600 text-xl font-semibold ">reddit</div>
 				{/* <select className="bg-transparent border border-2 border-b-neutral-600 rounded-xl ml-6 text-xs h-4">
