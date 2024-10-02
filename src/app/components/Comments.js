@@ -185,13 +185,13 @@ function Comments({ id }) {
 
 		return (
 			<div className="ml-2 comment">
-				<div className="flex text-sm mt-5 ml-1">
+				<div className="flex text-sm mt-5 ml-1 text-neutral-400">
 					<p>{author}</p>
 					<p className="pl-1">•</p>
 					<p className="pl-1">{`${dateCreatedParse(created_at)}`}</p>
 				</div>
 				<pre
-					className="text-sm resize-none h-fit focus:outline-none bg-transparent w-full my-1 ml-1 font-sf-pro text-neutral-400"
+					className="text-sm resize-none h-fit focus:outline-none bg-transparent w-full my-1 ml-1 font-sf-pro text-neutral-200"
 					disabled={"true"}
 					value={content}
 					>{content}
