@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
 function SignUpModal() {
-	const { showSignUpModal, setShowSignUpModal, checkUserAuthenticated } = useReddit();
+	const { showSignUpModal, setShowSignUpModal, checkUserAuthenticated, supabase } = useReddit();
 
 	const [user, setUser] = useState();
 	const [firstName, setFirstName] = useState();
@@ -25,6 +25,36 @@ function SignUpModal() {
 		setShowSignUpModal(false);
 		console.log('user: ', user, 'first name: ', firstName, 'last name: ', lastName, 'email: ', email, 'password: ', pass)
 		console.log(formData)
+		
+		const data = {
+			email: email,
+			password: pass,
+		};
+	
+		const metadata = {
+			first_name: firstName,
+			last_name: lastName,
+			username: user,
+		};
+	
+		const { error } = await supabase.auth.signUp({
+			email: data.email,
+			password: data.password,
+			options: {
+				data: metadata,
+			},
+		});
+	
+		if (error) {
+			redirect("/error");
+		}
+	
+		console.log(data, metadata)
+		
+		// revalidatePath("/", "layout");
+		// redirect("/");
+	
+
 		//router.push("/");
 		console.log("refresh after login");
 		await checkUserAuthenticated();

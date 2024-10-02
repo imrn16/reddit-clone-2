@@ -38,7 +38,7 @@ export async function signup(formData) {
 	const data = {
 		email: formData.get("email"),
 		password: formData.get("password"),
-		username: formData.get("username"),
+		//username: formData.get("username"),
 	};
 
 	const metadata = {
