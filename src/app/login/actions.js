@@ -99,6 +99,7 @@ export async function update(formData) {
     console.log('NO')
 	}
 
+	alert('Sign up successful. Click the link sent to your email to log in.')
 	revalidatePath("/", "layout");
 	redirect("/");
 }
