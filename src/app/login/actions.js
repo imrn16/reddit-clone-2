@@ -23,7 +23,8 @@ export async function login(formData) {
 	const { error } = await supabase.auth.signInWithPassword(data);
 
 	if (error) {
-		redirect("/error");
+		// redirect("/error");
+		return alert("Error signing in. Please refresh the page and try again.\n", `${error}`);
 	}
 
 	revalidatePath("/", "layout");
@@ -55,14 +56,11 @@ export async function signup(formData) {
 		},
 	});
 
-
-	console.log('sign up: ', data)
+	console.log("sign up: ", data);
 
 	if (error) {
-		redirect("/error");
-		console.log(error)
-		console.log('data: ', data, metadata)
-
+		// redirect("/error");
+		return alert("Error signing up. Please refresh the page and try again.\n", `${error}`);
 	}
 
 	revalidatePath("/", "layout");
@@ -89,21 +87,21 @@ export async function update(formData) {
 	const { error } = await supabase.auth.updateUser({
 		email: data.email,
 		password: data.password,
-			options: {
+		options: {
 			data: metadata,
 		},
 	});
 
 	if (error) {
-		redirect("/error");
-    console.log('NO')
+		// redirect("/error");
+		return alert("Error signing in. Please refresh the page and try again.\n", `${error}`);
+
+		console.log("NO");
 	}
 
-	alert('Sign up successful. Click the link sent to your email to log in.')
 	revalidatePath("/", "layout");
 	redirect("/");
 }
-
 
 // export async function signup(formData) {
 //   const supabase = createClient()
