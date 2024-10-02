@@ -185,7 +185,7 @@ function Comments({ id }) {
 
 		return (
 			<div className="ml-2 comment">
-				<div className="flex text-sm mt-5 ml-1 text-neutral-400">
+				<div className="flex text-xs mt-5 ml-1 text-neutral-400">
 					<p>{author}</p>
 					<p className="pl-1">•</p>
 					<p className="pl-1">{`${dateCreatedParse(created_at)}`}</p>
