@@ -167,7 +167,7 @@ export default function Home() {
 								</div>
 							</div>
 						)}
-						<div className="flex flex-col h-96 bg-transparent text-transparent">
+						<div className="flex flex-col h-96 mb-10 bg-transparent text-transparent">
 							<p>___</p>
 						</div>
 					</div>
