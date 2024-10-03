@@ -141,31 +141,32 @@ export const RedditProvider = ({ children }) => {
 		const now = new Date();
 		const createdDate = new Date(created);
 		const diffInSeconds = (now - createdDate) / 1000;
-
+	
 		if (diffInSeconds < 60) {
 			return `${Math.floor(diffInSeconds)} seconds ago`;
+		} else if (diffInSeconds < 3600 && Math.floor(diffInSeconds / 60) === 1) {
+			return `${Math.floor(diffInSeconds / 60)} minute ago`;
 		} else if (diffInSeconds < 3600) {
 			return `${Math.floor(diffInSeconds / 60)} minutes ago`;
+		} else if (diffInSeconds < 86400 && Math.floor(diffInSeconds / 3600) === 1) {
+			return `${Math.floor(diffInSeconds / 3600)} hour ago`;
 		} else if (diffInSeconds < 86400) {
-			// 72 hours
 			return `${Math.floor(diffInSeconds / 3600)} hours ago`;
 		} else if (diffInSeconds < 2592000 && Math.floor(diffInSeconds / 86400) === 1) {
-			// 365 days
 			return `${Math.floor(diffInSeconds / 86400)} day ago`;
 		} else if (diffInSeconds < 2592000) {
-			// 365 days
 			return `${Math.floor(diffInSeconds / 86400)} days ago`;
 		} else if (diffInSeconds < 31536000 && Math.floor(diffInSeconds / 2592000) === 1) {
-			// 365 days
 			return `${Math.floor(diffInSeconds / 2592000)} month ago`;
 		} else if (diffInSeconds < 31536000) {
-			// 365 days
 			return `${Math.floor(diffInSeconds / 2592000)} months ago`;
+		} else if (Math.floor(diffInSeconds / 31536000) === 1) {
+			return `${Math.floor(diffInSeconds / 31536000)} year ago`;
 		} else {
 			return `${Math.floor(diffInSeconds / 31536000)} years ago`;
 		}
 	}
-
+	
 	const fetchSubreddits = async () => {
 		const { data, error } = await supabase.from("subreddits").select();
 
@@ -199,7 +200,19 @@ export const RedditProvider = ({ children }) => {
 		}
 	};
 
-	const setComments = async ({ commentId, commentTitle, commentContent, commentAuthor, commentUpvote, commentDownvote, commentPic, commentCreated, commentSubreddit, commentFile, commentUpload }) => {
+	const setComments = async ({
+		commentId,
+		commentTitle,
+		commentContent,
+		commentAuthor,
+		commentUpvote,
+		commentDownvote,
+		commentPic,
+		commentCreated,
+		commentSubreddit,
+		commentFile,
+		commentUpload,
+	}) => {
 		setPostComs([]);
 		await fetchPosts();
 
@@ -320,7 +333,11 @@ export const RedditProvider = ({ children }) => {
 				reRenderComments,
 				setShowComPage,
 				showComPage2,
-				setShowComPage2, isLargeScreen, setIsLargeScreen, uploadType, fileName,
+				setShowComPage2,
+				isLargeScreen,
+				setIsLargeScreen,
+				uploadType,
+				fileName,
 			}}>
 			{children}
 		</RedditContext.Provider>

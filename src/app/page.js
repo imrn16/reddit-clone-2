@@ -86,7 +86,7 @@ export default function Home() {
 		// <RedditProvider>
 		<main className="">
 			<div className="top-0 w-full">
-			<Header />
+				<Header />
 			</div>
 			<CreatePost />
 			<CreateSubreddit />
@@ -100,8 +100,8 @@ export default function Home() {
 						<SubredditHeader />
 						{fetchError && <p>{fetchError}</p>}
 						{posts && (
-							<div>
-								<div>
+							<div className="">
+								<div className="">
 									{posts
 										.sort((a, b) => {
 											if (b.upvotes === a.upvotes) {
@@ -111,11 +111,11 @@ export default function Home() {
 										})
 										.map((post) => {
 											return (
-												<div className="p-2" key={post.id}>
-													
+												<div
+													className="p-2 "
+													key={post.id}>
 													{/*console.log('postid: ', post.id)*/}
 													<Post
-														
 														id={post.id}
 														title={post.title}
 														author={post.author}
@@ -188,7 +188,9 @@ export default function Home() {
 									})
 									.map((post) => {
 										return (
-											<div className="p-2" key={post.id}>
+											<div
+												className="p-2"
+												key={post.id}>
 												{/*console.log('postid: ', post.id)*/}
 												<Post
 													//key={post.id}
