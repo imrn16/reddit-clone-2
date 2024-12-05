@@ -110,7 +110,7 @@ function PostPage() {
 						</div>
 					</>
 				) : (
-					<div className="flex justify-center align-center items-center">Expand a reddit post to see more!</div>
+					<div className="flex justify-center align-center items-center">Expand a post to see more!</div>
 				)}
 			</div>
 			<div className="flex flex-col h-96 bg-transparent text-transparent">

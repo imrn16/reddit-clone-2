@@ -78,7 +78,7 @@ function Post({ id, title, content, author, upvote, downvote, postPic, subreddit
 			// onClick={() => setComments({ commentId: id, commentTitle: title, commentContent: content, commentAuthor: author, commentPic: postPic, commentCreated: createdAt, commentSubreddit: subreddit})}
 			className="flex h-auto 
 			drop-shadow-2xl  
-			rounded-2xl bg-neutral-950 hover:bg-neutral-900 hover:border-neutral-600 border-2 border-neutral-900 overflow-visible">
+			rounded-2xl bg-neutral-950 hover:bg-neutral-900 hover:border-neutral-600s border-2s border-neutral-900s overflow-visible">
 			<div className="flex-1 pl-3 mx-1 my-0.5 ">
 				<div className="flex flex-row mt-3">
 					<h3 className="flex items-center text-xs pr-3">🖥</h3>
